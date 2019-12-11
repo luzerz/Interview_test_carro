@@ -29,3 +29,15 @@ Create 3 endpoints that allowed the admin staff to:
 - Once you have the environment up, run `scripts/setup` to setup the database and run the migration
 
 - In order to seed the data, please run `php artisan db:seed`
+
+
+## Important !!!
+
+pls use docker compose to run this project
+
+    $ docker-compose -f build/docker-compose up --build
+
+if not pls change .env file    
+   
+So I attach a file Postman for test Api endpoint   
+[POSTMAN](Carro.postman_collection.json)

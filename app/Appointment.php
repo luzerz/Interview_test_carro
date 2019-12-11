@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
+    protected $fillable = ['car_id','workshop_id','start_time','end_time'];
     //
     public function car()
     {

@@ -1,0 +1,60 @@
+version: "3"
+
+volumes:
+  mysql: {}
+  mysql_php: {}
+
+services:
+  caddyl:
+    build:
+      context: ../
+      dockerfile: ./build/caddy/Dockerfile
+    image:  carro-service
+    volumes:
+      - ../:/www
+    links:
+      - carro
+      - mysql
+    env_file:
+      - caddy/caddy.env
+    ports:
+      - 80:80
+
+  carro:
+    build:
+      context: ../
+      dockerfile: ./build/php/Dockerfile
+    image:  carro-laravel
+    volumes:
+      - ../:/www
+    links:
+      - mysql
+    env_file:
+      - ../.env
+    ports:
+      - "9000:9000"
+  mysql:
+    image: mysql/mysql-server:5.7
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root!!root
+      - MYSQL_DATABASE=laravel
+      - MYSQL_USER=debug
+      - MYSQL_PASSWORD=debug
+    ports:
+      - 3306:3306
+    command: 'mysqld --ignore-db-dir=lost+found'
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mysql:mysql_php
+    ports:
+      - 9190:80
+    environment:
+      - MYSQL_USERNAME=debug
+      - MYSQL_ROOT_PASSWORD=debug
+      - PMA_HOST=mysql
+

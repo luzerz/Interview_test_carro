@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "9639c740-8bfa-4b16-a326-a7411da0f20b",
+		"name": "Carro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Recommend",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "availability",
+							"value": "2019-12-11 15:00:01",
+							"type": "text"
+						},
+						{
+							"key": "location_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/appointment/recommend",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"appointment",
+						"recommend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Appointment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/appointment/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"appointment",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " Schedule an appointmen",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "car_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "workshop_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "start_time",
+							"value": "2019-12-11 09:00:01",
+							"type": "text"
+						},
+						{
+							"key": "end_time",
+							"value": "2019-12-11 10:00:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/appointment",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"appointment"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

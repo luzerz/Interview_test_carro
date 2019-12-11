@@ -1,0 +1,13 @@
+{$DOMAIN_NAME}:80 {
+    root /www/public
+    fastcgi / carro:9000 php
+    rewrite {
+        regexp .*
+        ext /
+        to /index.php?{query}
+    }
+    tls off
+    log stdout
+    errors stdout
+    gzip
+}
